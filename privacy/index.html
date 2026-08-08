@@ -39,7 +39,7 @@
   <main>
     <article>
       <h1>Game Connect Social Privacy Policy</h1>
-      <p><strong>Policy version:</strong> 1.0</p>
+      <p><strong>Policy version:</strong> 1.1</p>
       <p><strong>Effective date:</strong> August 7, 2026</p>
       <p><strong>Current operator:</strong> Malyk Parker</p>
       <p><strong>Privacy and data requests:</strong> support@gameconnectsocial.com</p>
@@ -49,6 +49,8 @@
       <h2>1. Information you provide</h2>
       <h3>Account and authentication information</h3>
       <p>We process your email address, account identifier, authentication method, account status, and security/session information. If you choose Sign in with Apple or another supported identity provider, we receive the provider account identifier and information the provider makes available, such as an email address or private relay address. We do not receive your Apple Account password.</p>
+      <h3>Founding User beta access requests</h3>
+      <p>If you request Founding User access on the public GCS website, we collect the email address you submit, your consent record, request and confirmation times, and the status of your request. We use this information only to confirm the address, manage controlled beta invitations, send beta-testing updates, and honor withdrawal requests. The form uses a keyed one-way hash of the request IP address for short-lived abuse limits; GCS does not store the raw IP address in the Founding User signup database.</p>
       <h3>Profile and gaming information</h3>
       <p>You may provide a handle, display name, biography, avatar, profile banner, favorite games, platform preferences, gaming identities, skill or experience descriptions, microphone preference, and visibility choices. Gaming identities are normally player-provided unless expressly marked verified.</p>
       <h3>User-generated content</h3>
@@ -118,6 +120,9 @@
       <p>We keep information only as long as reasonably necessary for the purposes in this policy:</p>
       <ul>
       <li>account, profile, social, content, message, Team, and gameplay-coordination information is generally retained while the account or relevant feature record remains active;</li>
+      <li>unconfirmed Founding User requests expire after 30 days; confirmed requests are retained while the beta access program remains active or until the requester withdraws;</li>
+      <li>withdrawing a Founding User request immediately removes the stored email address; a pseudonymous email hash and withdrawal time may be retained for up to 12 months to prevent unwanted re-enrollment and document the withdrawal;</li>
+      <li>keyed Founding User request rate-limit hashes expire after 48 hours and do not contain the raw request IP address;</li>
       <li>short-lived Presence and active matching state expire or become unavailable under their lifecycle rules;</li>
       <li>explicit recommendation feedback may expire according to the control used; current design limits are up to 365 days for Not interested and 90 days for See less, and users may reset supported suggestions earlier;</li>
       <li>approved non-production raw recommendation-evaluation events expire after 30 days; they are not enabled for production users;</li>
@@ -146,6 +151,7 @@
       <li>manage Presence visibility, notification preferences, message previews, and device-level push permissions;</li>
       <li>block or mute users and report content or conduct;</li>
       <li>choose whether to join a Team, LFG, Party, or gameplay session;</li>
+      <li>withdraw a Founding User beta access request through the link provided in the confirmation email or by contacting support;</li>
       <li>use recommendation feedback and reset controls when available;</li>
       <li>remove supported content or request account deletion; and</li>
       <li>request access, correction, or deletion by contacting support@gameconnectsocial.com.</li>

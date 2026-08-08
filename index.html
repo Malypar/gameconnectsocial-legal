@@ -6,8 +6,10 @@
   <meta name="robots" content="index,follow">
   <meta name="theme-color" content="#080b10">
   <meta name="color-scheme" content="dark">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'unsafe-inline'; img-src 'self' data:; connect-src https://qcrfhakzogfisqmaejfh.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'">
   <link rel="canonical" href="https://gameconnectsocial.com/">
   <link rel="icon" href="/assets/gcs-app-icon.png" type="image/png">
+  <script src="/assets/founding-user.js" defer></script>
   <title>Game Connect Social — Find Your People. Get in the Game.</title>
   <meta name="description" content="Find players, form Parties, and get into the game with Game Connect Social. Founding Player beta access is opening in controlled waves.">
   <meta property="og:type" content="website">
@@ -189,7 +191,29 @@
     .join-panel { position: relative; padding: clamp(48px, 9vw, 90px) 24px; overflow: hidden; border: 1px solid var(--line); border-radius: 22px; background: radial-gradient(circle at 50% 0%, rgba(110,200,255,0.13), transparent 26rem), #0d141d; }
     .join-panel h2 { max-width: 800px; margin-inline: auto; }
     .join-panel > p:not(.eyebrow):not(.join-note) { max-width: 600px; margin: 0 auto; color: #a6b3bf; font-size: 1.05rem; }
-    .join-panel .button { margin-top: 30px; }
+    .founding-form { width: min(580px, 100%); margin: 30px auto 0; }
+    .founding-fields { display: grid; grid-template-columns: 1fr auto; gap: 10px; }
+    .founding-fields input {
+      min-width: 0;
+      min-height: 52px;
+      padding: 12px 15px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: rgba(4, 9, 14, 0.82);
+      color: var(--white);
+      font: inherit;
+    }
+    .founding-fields input::placeholder { color: #748596; }
+    .founding-fields input:focus { border-color: var(--ice); outline: 2px solid rgba(110,200,255,0.25); outline-offset: 1px; }
+    .founding-fields .button { cursor: pointer; }
+    .founding-fields .button:disabled { cursor: wait; opacity: 0.65; transform: none; }
+    .founding-consent { display: flex; align-items: flex-start; gap: 9px; margin: 14px auto 0; color: #8f9fad; font-size: 0.78rem; line-height: 1.45; text-align: left; }
+    .founding-consent input { width: 17px; height: 17px; flex: 0 0 auto; margin-top: 2px; accent-color: var(--ice); }
+    .founding-consent a { color: var(--ice-soft); }
+    .founding-status { min-height: 24px; margin: 14px 0 0; color: var(--ice-soft); font-size: 0.82rem; }
+    .founding-status[data-state="error"] { color: #ffb4b4; }
+    .founding-status[data-state="success"] { color: var(--green); }
+    .founding-honeypot { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
     .join-note { margin: 14px 0 0; color: #748596; font-size: 0.76rem; }
 
     .site-footer { padding: 0 0 42px; }
@@ -226,6 +250,7 @@
       .arena-features { grid-template-columns: 1fr; }
       .arena-feature { min-height: 105px; }
       .arena-feature strong { margin-top: 18px; }
+      .founding-fields { grid-template-columns: 1fr; }
     }
 
     @media (prefers-reduced-motion: no-preference) {
@@ -329,8 +354,24 @@
           <p class="eyebrow">Founding Player Beta</p>
           <h2 id="join-title"><span class="chrome-text">Help build the</span><br><span class="ice-text">central gaming system.</span></h2>
           <p>Join an early testing wave, play the core experience, and help shape what GCS becomes.</p>
-          <a class="button button-primary" href="mailto:support@gameconnectsocial.com?subject=Become%20a%20GCS%20Founding%20User&amp;body=I%20want%20to%20become%20a%20Game%20Connect%20Social%20Founding%20User.">Become a Founding User</a>
-          <p class="join-note">Opens one prepared email · Invitations will be released in controlled waves</p>
+          <form class="founding-form" id="founding-user-form" novalidate>
+            <div class="founding-honeypot" aria-hidden="true">
+              <label for="founding-company">Company</label>
+              <input id="founding-company" name="company" type="text" tabindex="-1" autocomplete="off">
+            </div>
+            <div class="founding-fields">
+              <label class="founding-honeypot" for="founding-email">Email address</label>
+              <input id="founding-email" name="email" type="email" maxlength="254" autocomplete="email" inputmode="email" placeholder="Email address" aria-describedby="founding-consent founding-status" required>
+              <button class="button button-primary" id="founding-submit" type="submit">Become a Founding User</button>
+            </div>
+            <label class="founding-consent" id="founding-consent">
+              <input id="founding-consent-checkbox" name="consent" type="checkbox" required>
+              <span>I agree that GCS may email me about Founding User beta access and testing updates. I can withdraw anytime. <a href="/privacy/">Privacy Policy</a></span>
+            </label>
+            <p class="founding-status" id="founding-status" role="status" aria-live="polite"></p>
+          </form>
+          <noscript><p class="join-note">JavaScript is required for the access form. You can also <a href="mailto:support@gameconnectsocial.com?subject=GCS%20Founding%20User%20Access">email support</a>.</p></noscript>
+          <p class="join-note">Confirm by email · Invitations will be released in controlled waves · A request does not guarantee immediate access</p>
         </div>
       </div>
     </section>
