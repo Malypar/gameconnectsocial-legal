@@ -1,0 +1,12 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["NFJ9DLMD3P.com.unosyn.gameconnect"],
+        "components": [
+          { "/": "/post/*", "comment": "Public GCS post links" }
+        ]
+      }
+    ]
+  }
+}
